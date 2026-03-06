@@ -26,7 +26,7 @@ export function showLotePopup(feature, { onChangeEstado, onSaveData, canEdit = t
 
   const proyecto = p.proyecto || "Proyecto Machayhuaycco";
   const etapa = p.etapa || "Etapa 1";
-  const ubicacion = p.ubicacion || "Ayacucho, Perú";
+  const ubicacion = p.ubicacion || "Ccorihuillca-Humanga,Perú";
 
   const estadoRaw = (p.estado || "disponible").toLowerCase();
   const estado = ["disponible","reservado","vendido"].includes(estadoRaw) ? estadoRaw : "disponible";
@@ -61,7 +61,7 @@ export function showLotePopup(feature, { onChangeEstado, onSaveData, canEdit = t
       <!-- Información -->
       <div class="lv2-card">
         <div class="lv2-cardHead"><span class="lv2-check">✓</span> Información</div>
-
+  <!-- ✅ para agregar tipologia  
         <div class="lv2-typo">
           <div class="lv2-fieldLabel">Tipología</div>
 
@@ -69,7 +69,7 @@ export function showLotePopup(feature, { onChangeEstado, onSaveData, canEdit = t
                data-key="tipologia"
                data-type="text"
                title="${canEdit ? "Click para editar" : ""}">${esc(tipologia)}</div>
-        </div>
+        </div>   -->
 
         <div class="lv2-line"></div>
 
@@ -126,11 +126,12 @@ export function showLotePopup(feature, { onChangeEstado, onSaveData, canEdit = t
           </div>
         </div>
 
-        <div class="lv2-icons">
-          <div class="lv2-icon"><span>⛰️</span><b>Vistas<br/>Panorámicas</b></div>
-          <div class="lv2-icon"><span>📈</span><b>Plusvalía<br/>Garantizada</b></div>
-          <div class="lv2-icon"><span>🚗</span><b>Fácil<br/>Acceso</b></div>
-        </div>
+        <!-- ✅  apartado ocultado  
+         <div class="lv2-icons">
+         <div class="lv2-icon"><span>⛰️</span><b>Vistas<br/>Panorámicas</b></div>
+         <div class="lv2-icon"><span>📈</span><b>Plusvalía<br/>Garantizada</b></div>
+         <div class="lv2-icon"><span>🚗</span><b>Fácil<br/>Acceso</b></div>
+         </div>     -->
 
         <div class="lv2-bottom">
           <div>
