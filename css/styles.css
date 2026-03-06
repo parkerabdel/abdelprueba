@@ -208,7 +208,7 @@ width:210px;
   right:45px;
   left:auto !important;
 
-  width:270px;                 /* ⬅️ antes 320 */
+  width:220px;                 /* ⬅️ antes 320 */
   max-height: calc(100vh - 170px); /* ⬅️ un poco más bajo */
   overflow:auto;
 
@@ -484,4 +484,88 @@ width:210px;
 
 
 
+/* para celular  */
 
+/* Tabs */
+.lv2-tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:8px;
+}
+
+.lv2-tab{
+  flex:1;
+  border:none;
+  border-radius:999px;
+  padding:10px 12px;
+  font-size:11px;
+  font-weight:800;
+  background:#f1f1f1;
+  color:#333;
+  cursor:pointer;
+}
+
+.lv2-tab.active{
+  background:#e24b2b;
+  color:#fff;
+}
+
+.lv2-tab-panel{
+  display:none;
+}
+
+.lv2-tab-panel.active{
+  display:block;
+}
+
+/* SOLO CELULAR: popup tipo tarjeta moderna */
+@media (max-width: 768px) {
+  #lote-popup{
+    top:90px;
+    left:16px !important;
+    right:16px;
+    width:250px;
+    max-height:calc(100vh - 120px);
+    border-radius:18px;
+  }
+
+  .lv2-hero{
+    height:72px;
+    border-radius:18px 18px 0 0;
+  }
+
+  .lv2-title{
+    font-size:15px;
+    line-height:1.05;
+  }
+
+  .lv2-sub{
+    font-size:11px;
+  }
+
+  .lv2-cardHead{
+    font-size:11px;
+  }
+
+  .lv2-fieldLabel{
+    font-size:11px;
+  }
+
+  .lv2-fieldValue{
+    font-size:18px;
+  }
+
+  .lv2-price{
+    font-size:18px;
+  }
+
+  .lv2-tab{
+    font-size:13px;
+    padding:12px 10px;
+  }
+
+  .lv2-pill{
+    font-size:12px;
+    padding:8px 6px;
+  }
+}
