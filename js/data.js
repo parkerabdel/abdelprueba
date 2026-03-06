@@ -7,22 +7,7 @@ export const LOTES = {
     // L01
     {
       type: "Feature",
-      properties: { id:"L01",
-        estado:"disponible",
-        precio:"100,000",
-        area_m2:111,
-        perimetro_total:62,
-        frente:10.18,
-        fondo:10.21,
-        derecha:20.37,
-        izquierda:20.26,
-        proyecto:"Proyecto Machayhuaycco",
-        etapa:"Etapa 1",
-        ubicacion:"Ayacucho, Perú"
-
-
-
-      },
+      properties: { id:"L01", estado: "disponible",labelPoint: [-74.257930, -13.137580]},
       geometry: {
         type: "Polygon",
         coordinates: [[
@@ -39,7 +24,7 @@ export const LOTES = {
     // L02
     {
       type: "Feature",
-      properties: { id: "L02", estado: "disponible" },
+      properties: { id: "L02", estado: "disponible" ,labelPoint: [-74.257883, -13.137463]},
       geometry: {
         type: "Polygon",
         coordinates: [[
@@ -282,7 +267,7 @@ export const LOTES = {
     // L17
     {
       type: "Feature",
-      properties: { id: "L17", estado: "disponible" },
+      properties: { id: "L17", estado: "disponible" , labelPoint: [-74.257310, -13.137050] },
       geometry: {
         type: "Polygon",
         coordinates: [[
