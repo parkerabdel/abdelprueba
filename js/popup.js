@@ -30,7 +30,7 @@ export function showLotePopup(feature, { onChangeEstado, onSaveData, canEdit = t
 
   const proyecto = p.proyecto || "Proyecto Machayhuaycco";
   const etapa = p.etapa || "Etapa 1";
-  const ubicacion = p.ubicacion || "Ccorihuillca-Humanga, Perú";
+   const ubicacion = p.ubicacion || "";
 
   const estadoRaw = (p.estado || "disponible").toLowerCase();
   const estado = ["disponible", "reservado", "vendido"].includes(estadoRaw)
