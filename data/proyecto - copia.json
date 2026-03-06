@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "updatedAt": "2026-03-06T23:56:36.836Z",
+  "estados": {
+    "L11": "disponible",
+    "L12": "disponible",
+    "L13": "disponible",
+    "L05": "vendido",
+    "L16": "vendido",
+    "L07": "disponible",
+    "L17": "disponible",
+    "L18": "disponible",
+    "L15": "disponible",
+    "L10": "disponible",
+    "L04": "vendido",
+    "L03": "vendido",
+    "L08": "disponible",
+    "L06": "disponible",
+    "L14": "disponible",
+    "L01": "reservado"
+  },
+  "datos": {
+    "L08": {
+      "tipologia": "Interior",
+      "precio": "--",
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "frente": "10.11",
+      "derecha": "20.39",
+      "fondo": "10.11",
+      "izquierda": "20.39"
+    },
+    "L06": {
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "precio": "--",
+      "frente": "10.11",
+      "izquierda": "20.39",
+      "derecha": "20.39",
+      "fondo": "10.11"
+    },
+    "L07": {
+      "frente": "10.11",
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "precio": "--",
+      "izquierda": "20.39",
+      "derecha": "20.39",
+      "fondo": "10.11"
+    },
+    "L14": {
+      "precio": "--",
+      "frente": "10.11",
+      "izquierda": "20.39",
+      "derecha": "20.39",
+      "perimetro_total": "61",
+      "area_m2": "200",
+      "fondo": "10.11"
+    },
+    "L01": {
+      "area_m2": "300",
+      "perimetro_total": "73",
+      "frente": "14.96",
+      "derecha": "12.20",
+      "izquierda": "23.51",
+      "fondo": "23.98",
+      "tipologia": "dcafaf",
+      "precio": "--"
+    },
+    "L03": {
+      "precio": "--",
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "frente": "10.11",
+      "derecha": "20.39",
+      "fondo": "10.11",
+      "izquierda": "20.39"
+    },
+    "L15": {
+      "area_m2": "223.50",
+      "perimetro_total": "63.80",
+      "tipologia": "Interior",
+      "derecha": "9.89",
+      "izquierda": "15.56",
+      "fondo": "21.16",
+      "frente": "17.23",
+      "precio": "--"
+    },
+    "L18": {
+      "perimetro_total": "75.80",
+      "area_m2": "300",
+      "precio": "--",
+      "frente": "11.01",
+      "derecha": "31.08",
+      "fondo": "6.30",
+      "izquierda": "20.26"
+    },
+    "L02": {
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "precio": "--",
+      "frente": "10.11",
+      "derecha": "21.95",
+      "fondo": "10.11",
+      "izquierda": "20.39"
+    },
+    "L04": {
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "precio": "--",
+      "frente": "10.11",
+      "derecha": "20.39",
+      "fondo": "10.11",
+      "izquierda": "20.39"
+    },
+    "L05": {
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "precio": "--",
+      "frente": "10.11",
+      "derecha": "20.39",
+      "fondo": "10.11",
+      "izquierda": "20.39"
+    },
+    "L09": {
+      "area_m2": "170",
+      "perimetro_total": "73.50",
+      "precio": "--",
+      "frente": "19.11",
+      "derecha": "20.39",
+      "izquierda": "13.78"
+    },
+    "L10": {
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "precio": "--",
+      "frente": "10.11",
+      "izquierda": "20.39",
+      "derecha": "20.39",
+      "fondo": "20.39"
+    },
+    "L11": {
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "precio": "--",
+      "frente": "10.11",
+      "izquierda": "20.39",
+      "derecha": "20.39",
+      "fondo": "10.11"
+    },
+    "L12": {
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "precio": "--",
+      "frente": "10.11",
+      "izquierda": "20.39",
+      "derecha": "20.39",
+      "fondo": "10.11"
+    },
+    "L13": {
+      "area_m2": "200",
+      "perimetro_total": "61",
+      "precio": "--",
+      "frente": "10.11",
+      "izquierda": "20.39",
+      "derecha": "20.39",
+      "fondo": "10.11"
+    },
+    "L16": {
+      "area_m2": "206.29",
+      "precio": "--",
+      "perimetro_total": "62.90",
+      "frente": "11.03",
+      "fondo": "13.97",
+      "izquierda": "22.44",
+      "derecha": "15.56"
+    },
+    "L17": {
+      "area_m2": "217",
+      "precio": "--",
+      "perimetro_total": "70",
+      "frente": "8.84",
+      "fondo": "10.91",
+      "derecha": "22.44",
+      "izquierda": "27.47"
+    }
+  }
+}
