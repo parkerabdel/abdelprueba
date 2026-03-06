@@ -1,0 +1,472 @@
+/* Reset básico */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  height:100%;
+  font-family:'DM Sans',sans-serif;
+  background:#111;
+  color:#fff;
+}
+
+/* Layout principal */
+.app{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+
+
+/* Header */
+header{
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  
+  background:#00338D;
+  border-bottom:1px solid #00338D;
+}
+
+.logo-empresa{
+  height:70px;
+  width:auto;
+  margin-right:8px;
+}
+
+
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#4a9b7f;
+}
+
+.brand-name{
+  font-weight:600;
+}
+
+.brand-tag{
+  font-size:12px;
+  color:#888;
+}
+
+/* Área principal */
+.main{
+  flex:1;
+  display:flex;
+}
+
+/* MAPA */
+#map{
+  flex:1;
+  height:100%;
+  position:relative;
+}
+
+/* Panel lateral */
+.panel{
+  width:320px;
+  background:#181818;
+  border-left:1px solid #2a2a2a;
+}
+
+/* Loader */
+.map-loader{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  background:#111;
+  z-index:10;
+}
+
+.loader-ring{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:3px solid #333;
+  border-top:3px solid #4a9b7f;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg);}
+}
+
+.loader-text{
+  margin-top:10px;
+  font-size:13px;
+  color:#aaa;
+}
+
+/* Control opacidad (Opción 1: profesional) */
+.map-control{
+  position:absolute;
+top:10px;
+left:20px;
+width:210px;
+
+  background:rgba(20,20,20,0.85);
+  backdrop-filter:blur(10px);
+
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.08);
+
+  padding:12px 14px;
+  z-index:6;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.35);
+}
+
+.map-control-title{
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:8px;
+  color:#ddd;
+}
+
+.map-control-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  color:#aaa;
+  margin-bottom:6px;
+}
+
+.map-control input{
+  width:100%;
+}
+
+/* ===== LEYENDA (la parte que me mandaste) ===== */
+
+.legend{
+  position:absolute;
+  bottom:2rem;
+  right:1.5rem;
+  background:rgba(24,24,24,0.92);
+  border:1px solid #2a2a2a;
+  border-radius:6px;
+  padding:0.75rem 1rem;
+  z-index:5;
+  backdrop-filter:blur(8px);
+}
+
+.legend-title{
+  font-size:0.65rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:#7a7570;
+  margin-bottom:0.6rem;
+}
+
+.legend-list{
+  display:flex;
+  flex-direction:column;
+  gap:0.4rem;
+}
+
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  font-size:0.72rem;
+  color:#f0ede8;
+}
+
+.legend-swatch{
+  width:10px;
+  height:10px;
+  border-radius:2px;
+  display:inline-block;
+}
+
+.legend-swatch.disponible{ background:#4a9b7f; }
+.legend-swatch.reservado{ background:#c9a86c; }
+.legend-swatch.vendido{ background:#c0392b; }
+.hidden { display: none !important; }
+
+/* ===== Popup estilo EXACTO (tipo tu imagen) ===== */
+/* ===== Popup compacto (misma estética, menos ancho/alto y menos espacios) ===== */
+#lote-popup{
+  position:absolute;
+  top:10px;
+  right:45px;
+  left:auto !important;
+
+  width:270px;                 /* ⬅️ antes 320 */
+  max-height: calc(100vh - 170px); /* ⬅️ un poco más bajo */
+  overflow:auto;
+
+  background:#fff;
+  border-radius:16px;          /* ⬅️ antes 20 */
+  box-shadow:0 14px 28px rgba(0,0,0,0.22);
+  z-index:9999;
+  color:#111;
+  border:1px solid rgba(0,0,0,0.08);
+}
+
+/* Header imagen */
+.lv2-hero{
+  position:relative;
+  height:66px;                 /* ⬅️ antes 92 */
+  border-radius:16px 16px 0 0; /* ⬅️ antes 20 */
+  overflow:hidden;
+}
+.lv2-hero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.lv2-hero::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.70) 100%);
+}
+.lv2-heroText{
+  position:absolute;
+  left:12px;                   /* ⬅️ antes 16 */
+  right:38px;                  /* ⬅️ antes 46 */
+  bottom:8px;                  /* ⬅️ antes 10 */
+  z-index:2;
+  color:#fff;
+}
+.lv2-title{
+  font-family:"DM Serif Display", serif;
+  font-size:14px;              /* ⬅️ antes 16 */
+  line-height:1.05;
+  font-weight:700;
+}
+.lv2-sub{
+  margin-top:2px;              /* ⬅️ antes 4 */
+  font-size:11px;              /* ⬅️ antes 12 */
+  opacity:.95;
+}
+.lv2-close{
+  position:absolute;
+  top:8px;                     /* ⬅️ antes 10 */
+  right:8px;                   /* ⬅️ antes 10 */
+  z-index:3;
+  width:24px;                  /* ⬅️ antes 28 */
+  height:24px;                 /* ⬅️ antes 28 */
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.35);
+  background:rgba(0,0,0,0.25);
+  color:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+}
+
+/* Body */
+.lv2-body{ padding:8px; }       /* ⬅️ antes 12 */
+
+.lv2-card{
+  border:1px solid rgba(0,0,0,0.08);
+  border-radius:12px;          /* ⬅️ antes 14 */
+  padding:8px;                 /* ⬅️ antes 10 */
+  background:#fff;
+}
+.lv2-card + .lv2-card{ margin-top:8px; } /* ⬅️ antes 10 */
+
+.lv2-cardHead{
+  display:flex;
+  align-items:center;
+  gap:6px;                     /* ⬅️ antes 8 */
+  margin-bottom:6px;           /* ⬅️ antes 8 */
+  font-weight:800;
+  color:#e24b2b;
+  font-size:12px;              /* ⬅️ antes 13 */
+}
+.lv2-check{
+  width:16px;                  /* ⬅️ antes 18 */
+  height:16px;                 /* ⬅️ antes 18 */
+  border-radius:999px;
+  background:#ffe1db;
+  color:#e24b2b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;              /* ⬅️ antes 12 */
+}
+
+.lv2-line{
+  height:1px;
+  background:rgba(0,0,0,0.08);
+  margin:6px 0;                /* ⬅️ antes 8 */
+}
+
+/* Bloques tipo tabla */
+.lv2-grid2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:8px;                     /* ⬅️ antes 10 */
+}
+.lv2-fieldLabel{
+  font-size:10px;              /* ⬅️ antes 11 */
+  color:#8a8f98;
+}
+.lv2-fieldValue{
+  margin-top:2px;              /* ⬅️ antes 3 */
+  font-weight:800;
+  font-size:12px;              /* ⬅️ antes 13 */
+  color:#111;
+}
+
+/* Tipología (bloque arriba) */
+.lv2-typo{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:4px;                     /* ⬅️ antes 6 */
+}
+
+/* Chips iconos */
+.lv2-icons{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:8px;                     /* ⬅️ antes 10 */
+  margin-top:8px;              /* ⬅️ antes 10 */
+}
+.lv2-icon{
+  text-align:center;
+  border:1px solid rgba(0,0,0,0.08);
+  border-radius:12px;
+  padding:6px 4px;             /* ⬅️ antes 8 6 */
+  background:#fff;
+}
+.lv2-icon span{
+  display:block;
+  font-size:15px;              /* ⬅️ antes 18 */
+  margin-bottom:4px;           /* ⬅️ antes 5 */
+}
+.lv2-icon b{
+  display:block;
+  font-size:10px;              /* ⬅️ antes 11 */
+  color:#4b5563;
+  line-height:1.1;
+  font-weight:700;
+}
+
+/* Precio + badge */
+.lv2-bottom{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:8px;                     /* ⬅️ antes 10 */
+  margin-top:8px;              /* ⬅️ antes 10 */
+}
+.lv2-priceLabel{
+  font-size:10px;              /* ⬅️ antes 11 */
+  color:#8a8f98;
+}
+.lv2-price{
+  font-size:17px;              /* ⬅️ antes 20 */
+  font-weight:900;
+}
+.lv2-badge{
+  padding:5px 10px;            /* ⬅️ antes 6 12 */
+  border-radius:999px;
+  font-weight:900;
+  font-size:11px;              /* ⬅️ antes 12 */
+  border:1px solid rgba(0,0,0,0.08);
+}
+.lv2-badge.disponible{ background:#e8f7ee; color:#1e7a3a; }
+.lv2-badge.reservado{ background:#fff3e6; color:#9a5b00; }
+.lv2-badge.vendido{ background:#fdecec; color:#a61b1b; }
+
+/* Botones estados (pills) */
+.lv2-actions{
+  display:flex;
+  gap:8px;                     /* ⬅️ antes 10 */
+  margin-top:8px;              /* ⬅️ antes 10 */
+}
+.lv2-pill{
+  flex:1;
+  border-radius:999px;
+  padding:7px 6px;             /* ⬅️ antes 10 8 */
+  font-size:11px;              /* ⬅️ antes 12 */
+  font-weight:900;
+  cursor:pointer;
+  border:1px solid rgba(0,0,0,0.10);
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;                     /* ⬅️ antes 6 */
+}
+.lv2-pill.active{
+  background:#f7f7f8;
+  box-shadow:0 8px 18px rgba(0,0,0,0.10);
+}
+.lv2-pill.disponible{ color:#1e7a3a; }
+.lv2-pill.reservado{ color:#9a5b00; }
+.lv2-pill.vendido{ color:#a61b1b; }
+
+
+/* Click-to-edit (inline) */
+.lv2-edit{
+  cursor:pointer;
+  border-radius:10px;
+  padding:2px 6px;
+}
+.lv2-edit:hover{
+  background:rgba(31,61,51,0.07);
+}
+
+/* Input inline */
+.lv2-inline-input{
+  width:100%;
+  border:1px solid rgba(0,0,0,0.14);
+  border-radius:10px;
+  padding:6px 8px;
+  font-size:13px;
+  font-weight:800;
+  outline:none;
+}
+.lv2-inline-input:focus{
+  border-color:#4a9b7f;
+  box-shadow:0 0 0 3px rgba(74,155,127,0.18);
+}
+
+
+
+.lv2-edit-disabled{
+  cursor: default !important;
+}
+.lv2-edit-disabled:hover{
+  background: transparent !important;
+}
+
+
+.map-control-btn{
+  margin-top:10px;
+  width:100%;
+  border:none;
+  border-radius:10px;
+  padding:10px 12px;
+  font-weight:700;
+  cursor:pointer;
+  background:rgba(255,255,255,0.10);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.15);
+}
+.map-control-btn:hover{
+  background:rgba(255,255,255,0.16);
+}

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "updatedAt": "2026-03-05T21:39:51.169Z",
+  "estados": {
+    "L11": "vendido",
+    "L12": "disponible",
+    "L13": "reservado",
+    "L05": "vendido",
+    "L16": "disponible",
+    "L07": "reservado",
+    "L17": "reservado",
+    "L18": "reservado",
+    "L15": "reservado",
+    "L10": "reservado",
+    "L04": "vendido",
+    "L03": "disponible",
+    "L08": "vendido",
+    "L06": "vendido",
+    "L14": "reservado"
+  },
+  "datos": {
+    "L08": {
+      "tipologia": "Interior",
+      "precio": "100,000",
+      "area_m2": 119,
+      "perimetro_total": 61.02,
+      "frente": "30",
+      "derecha": 20.37,
+      "fondo": 15,
+      "izquierda": 20.26
+    },
+    "L06": {
+      "area_m2": "30",
+      "perimetro_total": "30",
+      "precio": "200",
+      "frente": "9"
+    },
+    "L07": {
+      "frente": "10"
+    },
+    "L14": {
+      "precio": "11",
+      "frente": "aa",
+      "izquierda": "20.26",
+      "derecha": "20.37",
+      "perimetro_total": "61.02",
+      "area_m2": "aaaa",
+      "fondo": "aaa"
+    },
+    "L01": {
+      "area_m2": "130"
+    },
+    "L03": {
+      "precio": "--"
+    }
+  }
+}
