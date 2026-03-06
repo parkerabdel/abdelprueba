@@ -211,7 +211,12 @@ export function buildCentroidFC(lotesFC) {
   return {
     type: "FeatureCollection",
     features: (lotesFC.features || []).map((f) => {
-      const center = getLabelPointFromPolygon(f) || MAP_CONFIG.center;
+      const manualPoint = f.properties?.labelPoint;
+      const center =
+        Array.isArray(manualPoint) && manualPoint.length === 2
+          ? manualPoint
+          : getLabelPointFromPolygon(f) || MAP_CONFIG.center;
+
       return {
         type: "Feature",
         properties: {
@@ -319,7 +324,7 @@ export function createMap() {
         source: "lotes",
         paint: {
           "line-color": "#ffffff",
-          "line-width": 1,
+          "line-width": 1.8,
           "line-opacity": 1,
         },
       });
