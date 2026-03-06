@@ -166,7 +166,7 @@ function getLabelPointFromPolygon(feature) {
   let bestPoint = null;
   let bestDist = -Infinity;
 
-  const steps = 30; // más alto = mejor precisión
+  const steps = 30;
 
   for (let i = 0; i <= steps; i++) {
     for (let j = 0; j <= steps; j++) {
@@ -175,7 +175,6 @@ function getLabelPointFromPolygon(feature) {
 
       if (!pointInPoly([x, y], ring)) continue;
 
-      // distancia mínima a bordes
       let minDist = Infinity;
 
       for (let k = 0; k < ring.length - 1; k++) {
@@ -284,7 +283,6 @@ export function createMap() {
       console.error(
         "Tus LOTES parecen estar en UTM (metros). Mapbox necesita WGS84 [lng,lat]. Convierte antes de dibujar."
       );
-      // los cargo igual para debug, pero se verán mal
     }
 
     if (!map.getSource("lotes")) {
@@ -391,6 +389,362 @@ export function createMap() {
     } else {
       console.warn("No pude calcular bounds de LOTES (¿geometría rara?).");
     }
+
+    // =========================================================
+    // === 5) Labels de carreteras alineados al trazo ===
+    // ⚠️  Ajusta las coordenadas a tus carreteras reales.
+    // Tip: abre consola y ejecuta map.on('click', e => console.log(e.lngLat))
+    // para obtener los puntos exactos haciendo clic sobre el mapa.
+    // =========================================================
+    if (!map.getSource("carreteras-source")) {
+      map.addSource("carreteras-source", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              properties: { nombre: "Carretera Principal" },
+              geometry: {
+                type: "LineString",
+                coordinates: [
+                  [-74.258189, -13.135846],
+                  [-74.258305, -13.135999],
+                  [-74.258341, -13.136162],
+                  [-74.258340, -13.136321],
+                  [-74.258360, -13.136455],
+                  [-74.258468, -13.136637],
+                  [-74.258555, -13.136805],
+                  [-74.258555, -13.136893],
+                  [-74.258451, -13.137039],
+                  [-74.258383, -13.137195],
+                  [-74.258383, -13.137289],
+                  [-74.258489, -13.137377],
+                  [-74.258541, -13.137473],
+                  [-74.258584, -13.137623],
+                  [-74.258637, -13.137743],
+                  [-74.258651, -13.137827],
+                  [-74.258597, -13.137907],
+                  [-74.258464, -13.137949],
+                  [-74.258316, -13.137887],
+                  [-74.258171, -13.137728],
+                  [-74.258085, -13.137679],
+                  [-74.257998, -13.137700],
+                  [-74.257953, -13.137741],
+                  [-74.257832, -13.137822],
+                  [-74.257731, -13.137812],
+                  [-74.257504, -13.137741],
+                  [-74.257230, -13.137693],
+                  [-74.256987, -13.137701],
+                ],
+              },
+            },
+            // Puedes agregar más carreteras aquí:
+             {
+               type: "Feature",
+               properties: { nombre: "Jr. Roma" },
+               geometry: {
+                 type: "LineString",
+                 coordinates: [
+                  [-74.258049, -13.137565],
+                  [-74.258006, -13.137427],
+                  [-74.257962, -13.137288],
+                  [-74.257919, -13.137150],
+                  [-74.257876, -13.137012],   // fin
+                 ],
+               },
+             },
+              // ✅ Carretera 3
+             {
+                type: "Feature",
+                properties: { nombre: "Jr. las Orquideas" },
+                geometry: {
+                  type: "LineString",
+                  coordinates: [
+                    [-74.257934 , -13.137723 ],
+                    [-74.257731 , -13.137527 ],
+                    [-74.257663 , -13.137449 ],
+                    [-74.257556 , -13.137375 ],
+                    [-74.257466 , -13.137129 ],
+                    [-74.257401 , -13.136911 ],
+                  ],
+                },
+             },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          ],
+        },
+      });
+    }
+
+    if (!map.getLayer("carreteras-label")) {
+      map.addLayer({
+        id: "carreteras-label",
+        type: "symbol",
+        source: "carreteras-source",
+        layout: {
+         "symbol-placement": "line",
+         "text-field": ["get", "nombre"],
+         "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+         "text-size": 11,
+         "text-offset": [0, -1],
+         "text-keep-upright": true,
+         "text-transform": "uppercase",
+         "text-max-angle": 20,
+         "symbol-spacing": 90,   // ⬅️ SOLO UNO, elimina el duplicado
+        },
+        paint: {
+          "text-color": "#ffffff",
+          "text-halo-color": "#000000",
+          "text-halo-width": 1.8,
+        },
+      });
+    }
+
+
+
+
+// === 6) Manzana (círculo contenedor) ==============
+// === 6) Manzana (círculo fijo en metros) ===
+function crearCirculoGeoJSON(center, radioMetros, pasos = 64) {
+  const [lng, lat] = center;
+  const coords = [];
+  for (let i = 0; i <= pasos; i++) {
+    const angulo = (i * 360) / pasos;
+    const rad = (angulo * Math.PI) / 180;
+    const dLng = (radioMetros / (111320 * Math.cos((lat * Math.PI) / 180))) * Math.cos(rad);
+    const dLat = (radioMetros / 110540) * Math.sin(rad);
+    coords.push([lng + dLng, lat + dLat]);
+  }
+  return coords;
+}
+
+const MZ_CENTER = [-74.257676, -13.137146]; // ← tu coordenada central
+const MZ_RADIO_METROS = 10;             // ← radio en metros reales
+
+// Fuente 1: solo el polígono círculo
+if (!map.getSource("manzana-poly-source")) {
+  map.addSource("manzana-poly-source", {
+    type: "geojson",
+    data: {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "Polygon",
+        coordinates: [crearCirculoGeoJSON(MZ_CENTER, MZ_RADIO_METROS)],
+      },
+    },
+  });
+}
+
+// Fuente 2: solo el punto para el texto
+if (!map.getSource("manzana-label-source")) {
+  map.addSource("manzana-label-source", {
+    type: "geojson",
+    data: {
+      type: "Feature",
+      properties: { nombre: "Mz A" },
+      geometry: { type: "Point", coordinates: MZ_CENTER },
+    },
+  });
+}
+
+// Capa fill del círculo
+if (!map.getLayer("manzana-circle")) {
+  map.addLayer(
+    {
+      id: "manzana-circle",
+      type: "fill",
+      source: "manzana-poly-source",
+      paint: {
+        "fill-color": "#ffffff",
+        "fill-opacity": 0.08,
+        "fill-outline-color": "rgba(255,255,255,0.4)",
+      },
+    },
+    "lotes-fill" // debajo de los lotes
+  );
+}
+
+// Borde del círculo más visible
+if (!map.getLayer("manzana-circle-line")) {
+  map.addLayer(
+    {
+      id: "manzana-circle-line",
+      type: "line",
+      source: "manzana-poly-source",
+      paint: {
+        "line-color": "rgba(255,255,255,0.4)",
+        "line-width": 2,
+      },
+    },
+    "lotes-fill"
+  );
+}
+
+// Texto Mz A
+if (!map.getLayer("manzana-label")) {
+  map.addLayer({
+    id: "manzana-label",
+    type: "symbol",
+    source: "manzana-label-source",
+    layout: {
+      "text-field": ["get", "nombre"],
+      "text-font": ["DIN Offc Pro Bold", "Arial Unicode MS Bold"],
+      "text-size": 15,
+      "text-letter-spacing": 0.2,
+      "text-anchor": "center",
+      "text-allow-overlap": true,
+    },
+    paint: {
+      "text-color": "#ffffff",
+      "text-opacity": 0.55,
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.2,
+    },
+  });
+}
+
+
+
+
+
+// ====PARA MANZANA B ==================
+// =====================================
+
+
+
+const MZ_B_CENTER = [-74.257333, -13.137092]; // ← tu coordenada para Mz B
+const MZ_B_RADIO_METROS = 5;
+
+if (!map.getSource("manzana-b-poly-source")) {
+  map.addSource("manzana-b-poly-source", {
+    type: "geojson",
+    data: {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "Polygon",
+        coordinates: [crearCirculoGeoJSON(MZ_B_CENTER, MZ_B_RADIO_METROS)],
+      },
+    },
+  });
+}
+
+if (!map.getSource("manzana-b-label-source")) {
+  map.addSource("manzana-b-label-source", {
+    type: "geojson",
+    data: {
+      type: "Feature",
+      properties: { nombre: "Mz A" },
+      geometry: { type: "Point", coordinates: MZ_B_CENTER },
+    },
+  });
+}
+
+if (!map.getLayer("manzana-b-circle")) {
+  map.addLayer(
+    { id: "manzana-b-circle", type: "fill", source: "manzana-b-poly-source",
+      paint: { "fill-color": "#ffffff", "fill-opacity": 0.08, "fill-outline-color": "rgba(255,255,255,0.4)" },
+    }, "lotes-fill"
+  );
+}
+
+if (!map.getLayer("manzana-b-circle-line")) {
+  map.addLayer(
+    { id: "manzana-b-circle-line", type: "line", source: "manzana-b-poly-source",
+      paint: { "line-color": "rgba(255,255,255,0.4)", "line-width": 2 },
+    }, "lotes-fill"
+  );
+}
+
+if (!map.getLayer("manzana-b-label")) {
+  map.addLayer({
+    id: "manzana-b-label", type: "symbol", source: "manzana-b-label-source",
+    layout: {
+      "text-field": ["get", "nombre"],
+      "text-font": ["DIN Offc Pro Bold", "Arial Unicode MS Bold"],
+      "text-size": 15, "text-letter-spacing": 0.2,
+      "text-anchor": "center", "text-allow-overlap": true,
+    },
+    paint: { "text-color": "#ffffff", "text-opacity": 0.55, "text-halo-color": "#000000", "text-halo-width": 1.2 },
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+
+
+
+
+
+
+
+
+
 
     console.log("LOTES features:", LOTES.features.length);
     console.log("Primer feature:", LOTES.features[0]);
