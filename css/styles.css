@@ -478,3 +478,107 @@ width:210px;
 .map-control-btn:hover{
   background:rgba(255,255,255,0.16);
 }
+
+
+
+
+
+
+
+/* =========================
+   POPUP RESPONSIVE CELULAR
+   ========================= */
+@media (max-width: 768px) {
+  #lote-popup{
+    top: 70px;
+    right: 10px;
+    left: 10px !important;
+    width: auto;
+    max-height: calc(100vh - 90px);
+    border-radius: 14px;
+  }
+
+  .lv2-hero{
+    height: 58px;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .lv2-heroText{
+    left: 10px;
+    right: 34px;
+    bottom: 6px;
+  }
+
+  .lv2-title{
+    font-size: 12px;
+  }
+
+  .lv2-sub{
+    font-size: 9px;
+  }
+
+  .lv2-body{
+    padding: 6px;
+  }
+
+  .lv2-card{
+    padding: 6px;
+    border-radius: 10px;
+  }
+
+  .lv2-card + .lv2-card{
+    margin-top: 6px;
+  }
+
+  .lv2-cardHead{
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+
+  .lv2-fieldLabel{
+    font-size: 9px;
+  }
+
+  .lv2-fieldValue{
+    font-size: 11px;
+  }
+
+  .lv2-grid2{
+    gap: 6px;
+  }
+
+  .lv2-priceLabel{
+    font-size: 9px;
+  }
+
+  .lv2-price{
+    font-size: 14px;
+  }
+
+  .lv2-badge{
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .lv2-actions{
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .lv2-pill{
+    font-size: 10px;
+    padding: 6px 4px;
+  }
+
+  .lv2-close{
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+  }
+
+  .lv2-inline-input{
+    font-size: 11px;
+    padding: 5px 7px;
+  }
+}
+
