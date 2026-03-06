@@ -248,13 +248,14 @@ width:210px;
 }
 .lv2-title{
   font-family:"DM Serif Display", serif;
-  font-size:14px;              /* ⬅️ antes 16 */
+  font-size:15px;              /* ⬅️ antes 16 */
   line-height:1.05;
   font-weight:700;
 }
 .lv2-sub{
+  font-family:"Playfair Display", serif;
   margin-top:2px;              /* ⬅️ antes 4 */
-  font-size:11px;              /* ⬅️ antes 12 */
+  font-size:10.5px;              /* ⬅️ antes 12 */
   opacity:.95;
 }
 .lv2-close{
@@ -287,6 +288,9 @@ width:210px;
 .lv2-card + .lv2-card{ margin-top:8px; } /* ⬅️ antes 10 */
 
 .lv2-cardHead{
+
+  font-family:"DM Serif Display", serif;
+
   display:flex;
   align-items:center;
   gap:6px;                     /* ⬅️ antes 8 */
@@ -320,12 +324,14 @@ width:210px;
   gap:8px;                     /* ⬅️ antes 10 */
 }
 .lv2-fieldLabel{
-  font-size:10px;              /* ⬅️ antes 11 */
+  font-family:"Montserrat", serif;
+  font-size:10.5px;              /* ⬅️ antes 11 */
   color:#8a8f98;
 }
 .lv2-fieldValue{
+  font-family:"DM Serif Display", serif;
   margin-top:2px;              /* ⬅️ antes 3 */
-  font-weight:800;
+  font-weight:100;
   font-size:12px;              /* ⬅️ antes 13 */
   color:#111;
 }
@@ -373,10 +379,12 @@ width:210px;
   margin-top:8px;              /* ⬅️ antes 10 */
 }
 .lv2-priceLabel{
-  font-size:10px;              /* ⬅️ antes 11 */
+  font-family:"Montserrat", serif;
+  font-size:12px;              /* ⬅️ antes 11 */
   color:#8a8f98;
 }
 .lv2-price{
+  font-family:"DM Serif Display", serif;
   font-size:17px;              /* ⬅️ antes 20 */
   font-weight:900;
 }
